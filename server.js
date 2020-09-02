@@ -10,6 +10,11 @@ server.on("connection", (client) => {
   client.setEncoding('utf8');
   client.on('data', data => {
     console.log('Client says:', data);
+    // check if the download command was sent
+    if (data.split(' ')[0] === "download") {
+      console.log('Client requested the following files:', data.split(' ').slice(1).join(' '));
+    }
+
   });
 });
 
