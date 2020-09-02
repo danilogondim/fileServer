@@ -12,7 +12,9 @@ conn.on('data', (data) => {
 // This listener waits for keyboard input
 // and on enter it sends to the server
 const stdin = process.stdin;
+stdin.setEncoding('utf8');
 stdin.on('data', input => {
+  input = input.replace(/\n/, "");
   conn.write(input);
 });
 
